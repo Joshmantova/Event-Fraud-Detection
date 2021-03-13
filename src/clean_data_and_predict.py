@@ -34,7 +34,7 @@ class Data:
             self.raw_data = pd.read_json(path_to_json_data)
         self.pipe = None
     
-    def _load_prediction_pipe(self, path='../models/prediction_pipe.joblib'):
+    def _load_prediction_pipe(self, path='models/prediction_pipe.joblib'):
         return joblib.load(path)
 
     def predict(self, X):
@@ -44,7 +44,7 @@ class Data:
     #Defining several functions that will be used below to transform the data
     def transform_description_to_proba(self, descriptions):
         "Takes NLP pipe trained on training data only to transform descriptions to prob of fraud"
-        nlp_pipe = joblib.load('../models/nlp_pipe.joblib')
+        nlp_pipe = joblib.load('models/nlp_pipe.joblib')
         return nlp_pipe.predict_proba(descriptions)[:, 1]
 
     def get_ticket_price(self, val):
