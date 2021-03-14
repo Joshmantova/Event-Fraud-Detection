@@ -4,7 +4,9 @@ import streamlit as st
 from PIL import Image
 from nlp_model import spacy_tokenizer
 from clean_data_and_predict import Data
+import os
 
+st.write(os.listdir())
 data = Data()
 raw_data = data.raw_data
 clean_data = data.clean()
