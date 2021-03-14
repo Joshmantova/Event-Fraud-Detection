@@ -22,6 +22,8 @@ from imblearn.over_sampling import SMOTE
 from imblearn.pipeline import Pipeline as smote_pipeline
 
 import joblib
+import os
+import zipfile
 #need to import the feature engineering function to work with the pipe
 from nlp_model import spacy_tokenizer
 
@@ -34,8 +36,12 @@ class Data:
             self.raw_data = pd.read_json(path_to_json_data)
         self.pipe = None
     
-    def _load_prediction_pipe(self, path='models/prediction_pipe.joblib'):
-        return joblib.load(path)
+    def _load_prediction_pipe(self):
+        if 'prediction_pipe.joblib' not in os.listdir('models/'):
+            with zipfile.ZipFile('models/prediction_pipe.joblib.zip', 'r') as zip_ref:
+                zip_ref.extractall()
+        pipe = joblib.load('prediction_pipe.joblib')
+        return pipe
 
     def predict(self, X):
         self.pipe = self._load_prediction_pipe()
