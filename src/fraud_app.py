@@ -7,6 +7,8 @@ from clean_data_and_predict import Data
 import os
 
 st.write(os.listdir())
+st.write(os.listdir('models/'))
+
 data = Data()
 raw_data = data.raw_data
 clean_data = data.clean()
