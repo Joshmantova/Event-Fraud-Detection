@@ -39,7 +39,7 @@ class Data:
     def _load_prediction_pipe(self):
         if 'prediction_pipe.joblib' not in os.listdir('models/'):
             with zipfile.ZipFile('models/prediction_pipe.joblib.zip', 'r') as zip_ref:
-                zip_ref.extractall()
+                zip_ref.extractall('models/')
         pipe = joblib.load('models/prediction_pipe.joblib')
         return pipe
 
