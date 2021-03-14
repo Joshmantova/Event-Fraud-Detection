@@ -1,5 +1,5 @@
 # Summary
-The goal of this project was to train and deploy a machine learning model that would take in a stream of raw event data and correclty predict whether or not the event was fraud. A stacked Naive Bayes / Random Forest model was used and attained a holdout test score of .94 indicating a very high level of predictive power. This model was then deployed on an AWS EC2 instance that displayed the predictions and data in realtime in a Flask app and then stored the predictions in a PostgreSQL server.
+The goal of this project was to train and deploy a machine learning model that would take in a stream of raw event data and correclty predict whether or not the event was fraud. A stacked Naive Bayes / Random Forest model was used and attained a holdout F1 score of .94 indicating a very high level of predictive power. This model was then deployed on an AWS EC2 instance that displayed the predictions and data in realtime in a Flask app and then stored the predictions in a PostgreSQL server.
 
 # Background
 ![](imgs/example.png)
@@ -57,7 +57,7 @@ After EDA, we saw that there were several features that could help differentiate
     * Logistic regression
     * Support vector machines
 
-* Random forest stacked with NLP / Naive Bayes produced best results with a test recall score of 93%, and an F-1 Score of 94%.
+* Random forest stacked with NLP / Naive Bayes produced best results with a test recall score of .93, and an F1 Score of .94.
 
 * A 5 fold cross validated grid search was then performed to search for optimal hyperparameters for the Random Forest model as well as the description vectorizer. Only two hyperparameters were tuned based on the outcome of the grid search
     * Random forest number of estimators was increased from the default 100 to 3000
