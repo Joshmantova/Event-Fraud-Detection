@@ -4,10 +4,6 @@ import streamlit as st
 from PIL import Image
 from nlp_model import spacy_tokenizer
 from clean_data_and_predict import Data
-import os
-
-st.write(os.listdir())
-st.write(os.listdir('models/'))
 
 data = Data()
 raw_data = data.raw_data
@@ -28,8 +24,8 @@ st.write(f"Raw data")
 st.write(raw_data)
 st.write(f"Organization name: {org_name}")
 
-img = Image.open('imgs/Final_Prediction_Pipeline.png')
-st.image(img)
-
 st.write(f"Fraud risk: {ordinal_prediction}")
 st.write(f"Likelihood of fraud: {prediction}")
+
+img = Image.open('imgs/Final_Prediction_Pipeline.png')
+st.image(img)
