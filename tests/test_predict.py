@@ -11,7 +11,6 @@ def test_data_source():
 
 def test_clean_data():
     # df = pd.read_csv("tests/raw_test_data.csv")
-    print(os.curdir)
     d = Data()
     d.clean()
     assert True

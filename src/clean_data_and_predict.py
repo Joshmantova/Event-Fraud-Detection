@@ -5,8 +5,11 @@ import datetime as dt
 import joblib
 import os
 import zipfile
+
+import en_fraud_lg
+from spacy_preprocessing import strip_html_tags
 #need to import the feature engineering function to work with the pipe
-from .nlp_model import spacy_tokenizer
+# from .nlp_model import spacy_tokenizer
 
 class Data:
 
@@ -31,8 +34,14 @@ class Data:
     #Defining several functions that will be used below to transform the data
     def transform_description_to_proba(self, descriptions):
         "Takes NLP pipe trained on training data only to transform descriptions to prob of fraud"
-        nlp_pipe = joblib.load('models/nlp_pipe.joblib')
-        return nlp_pipe.predict_proba(descriptions)[:, 1]
+        nlp = en_fraud_lg.load()
+        text = strip_html_tags(descriptions.values[0])
+        doc = nlp(text)
+        fraud_prob = doc.cats.get("FRAUD")
+
+        return fraud_prob
+        # nlp_pipe = joblib.load('models/nlp_pipe.joblib')
+        # return nlp_pipe.predict_proba(descriptions)[:, 1]
 
     def get_ticket_price(self, val):
         """Calculates average ticket price across all training events"""
