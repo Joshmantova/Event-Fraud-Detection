@@ -111,3 +111,4 @@ venv.bak/
 data/clean_data.csv
 data/data.json
 models/prediction_pipe.joblib
+*.json

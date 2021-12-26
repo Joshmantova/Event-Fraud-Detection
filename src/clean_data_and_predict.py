@@ -1,31 +1,12 @@
 import pandas as pd
 import numpy as np
-
-from sklearn.preprocessing import FunctionTransformer
-from sklearn.preprocessing import StandardScaler
-from sklearn.preprocessing import OneHotEncoder
-from sklearn.model_selection import GridSearchCV
-from sklearn.model_selection import cross_val_score
-from sklearn.model_selection import train_test_split
-from sklearn.metrics import accuracy_score
-from sklearn.metrics import recall_score
-from sklearn.metrics import f1_score
-from sklearn.linear_model import LogisticRegression
-from sklearn.ensemble import RandomForestClassifier
-from sklearn.pipeline import Pipeline
-from sklearn.compose import ColumnTransformer
-from sklearn.impute import SimpleImputer
-from sklearn.impute import KNNImputer
 import datetime as dt
-
-from imblearn.over_sampling import SMOTE
-from imblearn.pipeline import Pipeline as smote_pipeline
 
 import joblib
 import os
 import zipfile
 #need to import the feature engineering function to work with the pipe
-from nlp_model import spacy_tokenizer
+from .nlp_model import spacy_tokenizer
 
 class Data:
 
