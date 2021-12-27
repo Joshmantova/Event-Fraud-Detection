@@ -18,8 +18,6 @@ from sklearn.compose import ColumnTransformer
 from sklearn.impute import SimpleImputer
 from sklearn.impute import KNNImputer
 
-from nlp_model import spacy_tokenizer
-
 from imblearn.over_sampling import SMOTE
 from imblearn.pipeline import Pipeline as smote_pipeline
 

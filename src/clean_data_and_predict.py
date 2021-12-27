@@ -8,8 +8,6 @@ import zipfile
 
 import en_fraud_sm
 from .spacy_preprocessing import strip_html_tags
-#need to import the feature engineering function to work with the pipe
-# from .nlp_model import spacy_tokenizer
 
 class Data:
 
@@ -34,7 +32,7 @@ class Data:
     #Defining several functions that will be used below to transform the data
     def transform_description_to_proba(self, descriptions):
         "Takes NLP pipe trained on training data only to transform descriptions to prob of fraud"
-        nlp = en_fraud_lg.load()
+        nlp = en_fraud_sm.load()
         text = strip_html_tags(descriptions.values[0])
         doc = nlp(text)
         fraud_prob = doc.cats.get("FRAUD")
