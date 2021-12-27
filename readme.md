@@ -1,5 +1,5 @@
 # Summary
-The goal of this project was to train and deploy a machine learning model that would take in a stream of raw event data and correclty predict whether or not the event was fraud. A stacked Naive Bayes / Random Forest model was used and attained a holdout F1 score of .94 indicating a very high level of predictive power. This model was then deployed using Streamlit Sharing that displays predictions and data in realtime. Here is a link to the deployed application:
+The goal of this project was to train and deploy a machine learning model that would take in a stream of raw event data and correctly predict whether or not the event was fraud. A stacked model was used and attained a holdout F1 score of .94 indicating a very high level of predictive power. The stacked model involved converting the event description to a probability of fraud using a custom trained Neural Network with 1 hidden layer before passing that probability score to a Random Forest Classifier with the other extracted features. This model was then deployed using Streamlit Sharing that displays predictions and data in realtime. Here is a link to the deployed application:
 
 [Deployed Fraud Application Link](https://share.streamlit.io/joshmantova/event-fraud-detection/fraud_app.py)
 
@@ -47,42 +47,43 @@ After EDA, we saw that there were several features that could help differentiate
 * Time until event begins
 * Event length
 * Probability of a description being a fraudulent event
-    * Naive bayes model trained on the descriptions of the event
+    * Neural Network w/ TF embedding trained on the descriptions of the event
 * NA values were filled with the average for that feature
 
 # Modeling
-* Multiple modeling techinques were used and the performance of each was assessed
+* Multiple modeling techniques were used and the performance of each was assessed
     * Naive Bayes
+    * Neural Network
     * Random forest model
     * Gradient boosted classifier
     * Adaboost classifier
     * Logistic regression
     * Support vector machines
 
-* Random forest stacked with NLP / Naive Bayes produced best results with a test recall score of .93, and an F1 Score of .94.
+* Random Forest stacked with Neural Network produced best results with a test recall score of .93, and an F1 Score of .94.
 
 * A 5 fold cross validated grid search was then performed to search for optimal hyperparameters for the Random Forest model as well as the description vectorizer. Only two hyperparameters were tuned based on the outcome of the grid search
     * Random forest number of estimators was increased from the default 100 to 3000
-    * Vectorizer n_gram range was increased to (1, 2), max features was increased to 10000, and max_df was changed to .90
+    * Vectorizer n_gram range was increased to (1, 3)
 
 * Most important features:
-    * Description probability from Naive Bayes model
+    * Description probability from Neural Network model
     * Number of Payouts
     * Average quantity sold
     * Days to event
     * User age
 ![](imgs/Feature_Importances.png)
 
-* SMOTE techinque used to address class imbalance issues
+* SMOTE technique used to address class imbalance issues
     * Generated new data points based on our data so that we have equal amounts of fraud and non-fraud events
 
 * Final model included a naive bayes model stacked on top of a random forest model
 
-* The function transfomer in the pipeline visualization below is a function that engineers the features mentioned above, removes any non-useful features, and transforms the natural language descriptions into a probability of fraud using the trained Naive Bayes model
+* The function transformer in the pipeline visualization below is a function that engineers the features mentioned above, removes any non-useful features, and transforms the natural language descriptions into a probability of fraud using the trained Naive Bayes model
 
 ![](imgs/Final_Prediction_Pipeline.png)
 
-* NOTE: You might think that training a supervised model like the Naive Bayes to predict the label fraud and subsequently using that output as an input to another model may introduce data leakeage and result in overfitting
+* NOTE: You might think that training a supervised model like the Naive Bayes to predict the label fraud and subsequently using that output as an input to another model may introduce data leakage and result in overfitting
     * Cross validation reveals that even though there may be some data leakage involved in this approach, the patterns the Naive Bayes model learned from the training data generalizes to unseen data
 
 * Training accuracy score: 1.0
