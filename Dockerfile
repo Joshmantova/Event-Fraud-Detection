@@ -9,4 +9,4 @@ RUN pip install -r requirements.txt
 EXPOSE 8501
 
 ENTRYPOINT [ "streamlit", "run" ]
-CMD [ "src/fraud_app.py" ]
+CMD [ "fraud_app.py" ]
