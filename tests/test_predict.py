@@ -1,7 +1,6 @@
 import requests
 import pandas as pd
 from src.clean_data_and_predict import Data
-from src.nlp_model import spacy_tokenizer
 import os
 
 def test_data_source():
