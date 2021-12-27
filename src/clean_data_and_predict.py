@@ -7,7 +7,7 @@ import os
 import zipfile
 
 import en_fraud_lg
-from spacy_preprocessing import strip_html_tags
+from .spacy_preprocessing import strip_html_tags
 #need to import the feature engineering function to work with the pipe
 # from .nlp_model import spacy_tokenizer
 
