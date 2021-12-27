@@ -1,0 +1,61 @@
+{
+  "lang":"en",
+  "name":"en_fraud_sm",
+  "version":"0.0.0",
+  "description":"",
+  "author":"",
+  "email":"",
+  "url":"",
+  "license":"",
+  "spacy_version":">=3.2.1,<3.3.0",
+  "spacy_git_version":"800737b41",
+  "vectors":{
+    "width":0,
+    "vectors":0,
+    "keys":0,
+    "name":null
+  },
+  "labels":{
+    "textcat":[
+      "FRAUD",
+      "NOTFRAUD"
+    ]
+  },
+  "pipeline":[
+    "textcat"
+  ],
+  "components":[
+    "textcat"
+  ],
+  "disabled":[
+
+  ],
+  "performance":{
+    "cats_score":0.6171166095,
+    "cats_score_desc":"macro F",
+    "cats_micro_p":0.9318075666,
+    "cats_micro_r":0.9318075666,
+    "cats_micro_f":0.9318075666,
+    "cats_macro_p":0.8325454732,
+    "cats_macro_r":0.58029428,
+    "cats_macro_f":0.6171166095,
+    "cats_macro_auc":0.7685948811,
+    "cats_f_per_type":{
+      "FRAUD":{
+        "p":0.7297297297,
+        "r":0.1656441718,
+        "f":0.27
+      },
+      "NOTFRAUD":{
+        "p":0.9353612167,
+        "r":0.9949443883,
+        "f":0.964233219
+      }
+    },
+    "cats_macro_auc_per_type":0.0,
+    "textcat_loss":16.888579528
+  },
+  "requirements":[
+
+  ]
+}
