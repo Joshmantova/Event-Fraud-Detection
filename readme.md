@@ -1,3 +1,5 @@
+![Test Badge](https://github.com/Joshmantova/Event-Fraud-Detection/actions/workflows/python-app.yml/badge.svg) 
+
 # Summary
 The goal of this project was to train and deploy a machine learning model that would take in a stream of raw event data and correctly predict whether or not the event was fraud. A stacked model was used and attained a holdout F1 score of .94 indicating a very high level of predictive power. The stacked model involved converting the event description to a probability of fraud using a custom trained Neural Network with 1 hidden layer before passing that probability score to a Random Forest Classifier with the other extracted features. This model was then deployed using Streamlit Sharing that displays predictions and data in realtime. Here is a link to the deployed application:
 
